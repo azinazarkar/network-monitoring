@@ -3,7 +3,10 @@ from struct import *
 import psutil
 import os
 
-# this function is taken from https://github.com/jshreyans/sniffer/blob/master/sniffer_2.py
+###########global vars
+port = 65565
+
+#this function is taken from https://github.com/jshreyans/sniffer/blob/master/sniffer_2.py
 def get_mac_address(bytesString):
   '''
   returns the mac address
@@ -64,7 +67,7 @@ def main ():
     while True:
         # listening on port 65565 and receiving the packet
         print("---------------------------------new packet--------------------------------------")
-        packet = s.recvfrom(65565)
+        packet = s.recvfrom(port)
         packet = packet[0]
         # unpacking ip header
         iph = struct.unpack('! 6s 6s H', packet[:14])
